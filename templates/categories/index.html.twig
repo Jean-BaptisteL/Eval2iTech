@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<h1 class="test-center">Liste des catégories</h1>
+<div class="d-flex justify-content-center">
+    <div class="list-group">
+        {% for category in categories %}
+            <a href="{{ path('app_category_details', {'slug': category.slug}) }}" class="list-group-item list-group-item-action" aria-current="true">
+                {{category.name}}
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

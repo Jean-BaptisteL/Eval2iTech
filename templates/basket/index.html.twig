@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier
+{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-2 mb-5">Mon panier</h1>
+<div class="d-flex justify-content-center">
+    <div class="row container m-0">
+        <table class="table col-6">
+            <thead>
+                <tr>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for basket in basketList %}
+                <tr>
+                    <td>{{ basket['product'] }}</td>
+                    <td>{{ basket['quantity'] }}</td>
+                    <td>{{ basket['price'] }}</td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td colspan="3" class="text-end">Prix total : {{ totalPrice }}€</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

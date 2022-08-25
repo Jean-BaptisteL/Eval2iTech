@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center mb-5">Mon super site E-commerce</h1>
+
+    <div class="d-flex justify-content-around">
+        {% for product in products %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ product.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price }}€</p>
+                    <a href="{{ path('app_product_details', {'id': product.id}) }}" class="btn btn-primary">Détails</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
