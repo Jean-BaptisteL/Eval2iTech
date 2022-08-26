@@ -28,6 +28,12 @@
                 </tr>
             </tbody>
         </table>
+        {% if app.user %}
+            <a href="{{ path('app_order') }}" class="btn btn-primary col-md-3">Passer la commande</a>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-primary col-md-3">Se connecter pour passer la commande</a>
+        {% endif %}
+        
     </div>
 </div>
 {% endblock %}

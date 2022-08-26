@@ -41,7 +41,10 @@
 							<a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
 						</li>
 					</ul>
-						<a href="{{ path('app_basket') }}" class="text-dark">Mon panier</a>
+					{% if not app.user %}
+					<a href="{{ path('app_profil') }}" class="text-dark">Mon panier</a>
+					{% endif %}
+					<a href="{{ path('app_basket') }}" class="text-dark">Mon panier</a>
 				</div>
 			</div>
 		</nav>
