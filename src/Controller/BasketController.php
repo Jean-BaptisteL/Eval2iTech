@@ -30,7 +30,7 @@ class BasketController extends AbstractController
         $basketList = [];
         $totalPrice = 0;
         
-        if (!$session->get('basket') && !$this->getUser()){
+        if (!$session->get('basket') && $this->getUser()){
             foreach ($baskets as $basket) {
                 $product = $productRepository->find($basket->getProduct()->getId());
                 array_push($basketList, ['product' => $product->getName(), 'quantity' => $basket->getQuantity(), 'price' => 'Prix unitaire = ' . $product->getPrice() . '€ Prix total = ' . $product->getPrice()*$basket->getQuantity() . '€']);

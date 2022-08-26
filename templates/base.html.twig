@@ -41,8 +41,11 @@
 							<a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
 						</li>
 					</ul>
-					{% if not app.user %}
-					<a href="{{ path('app_profil') }}" class="text-dark">Mon panier</a>
+					{% if  app.user %}
+						{% if app.user.roles['roles'] is same as('admin') %}
+							<a href="{{ path('app_admin') }}" class="text-dark me-2">Admin</a>
+						{% endif %}
+					<a href="{{ path('app_profil') }}" class="text-dark me-2">Mon profil</a>
 					{% endif %}
 					<a href="{{ path('app_basket') }}" class="text-dark">Mon panier</a>
 				</div>

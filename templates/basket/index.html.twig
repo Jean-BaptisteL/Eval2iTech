@@ -6,6 +6,7 @@
 {% block body %}
 <h1 class="text-center mt-2 mb-5">Mon panier</h1>
 <div class="d-flex justify-content-center">
+{% if basketList %}
     <div class="row container m-0">
         <table class="table col-6">
             <thead>
@@ -33,7 +34,9 @@
         {% else %}
             <a href="{{ path('app_login') }}" class="btn btn-primary col-md-3">Se connecter pour passer la commande</a>
         {% endif %}
-        
     </div>
+{% else %}
+    <p class="text-center">Votre panier est vide !</p>
+{% endif %}
 </div>
 {% endblock %}

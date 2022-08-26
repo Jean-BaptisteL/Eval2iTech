@@ -6,6 +6,8 @@ use App\Entity\Order;
 use App\Repository\BasketRepository;
 use App\Repository\OrderRepository;
 use App\Repository\ProductRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -15,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
+
     #[Route('/order', name: 'app_order')]
     public function index(Request $request, ManagerRegistry $managerRegistry, BasketRepository $basketRepository, ProductRepository $productRepository, OrderRepository $orderRepository): Response
     {
@@ -47,6 +50,7 @@ class OrderController extends AbstractController
             $order->setProducts($orderProducts);
             $order->setTotalPrice($totalPrice);
             $order->setUser($user);
+            $order->setDate(new \DateTime());
             if (random_int(1, 2) === 1) {
                 $finishedOrder = 'OK';
                 $orderRepository->add($order, true);
